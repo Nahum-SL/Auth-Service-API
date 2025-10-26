@@ -1,4 +1,4 @@
-import { SignJWT, jwtVerify } from "jose";
+import { SignJWT, jwtVerify, JWTPayload } from "jose";
 
 /**
  * JWT Crea tokens seguros para autenticar usuarios sin sesiones
@@ -9,13 +9,13 @@ const secret = new TextEncoder().encode(
     process.env.JWT_SECRET || 'tu-secreto-super-seguro-cambiar-en-produccion'
 )
 
-interface TokenPayload {
+interface TokenPayload extends JWTPayload {
     userId: string;
     email: string;
 }
 
 export async function createToken(payload: TokenPayload, expiresIn = '7d'): Promise<string> {
-    const token = await new SignJWT(payload as any)
+    const token = await new SignJWT(payload)
     .setProtectedHeader({ alg: 'HS256'})
     .setIssuedAt()
     .setExpirationTime(expiresIn)
