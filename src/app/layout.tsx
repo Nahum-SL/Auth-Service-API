@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { raleway } from "@/utils/fonts";
 import "./globals.css";
 
@@ -17,6 +18,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1 pt-25">
           {children}           
+          <SpeedInsights />
         </main>      
         <Footer />
       </body>
