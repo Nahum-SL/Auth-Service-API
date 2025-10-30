@@ -7,7 +7,7 @@ interface WelcomeEmailProps {
 
 export default function PasswordReset({
         name = 'usuario',
-        resetUrl = 'https://example.com/verify' 
+        resetUrl = 'https://auth-service-api-one.vercel.app/verify' 
     }: WelcomeEmailProps) {
     return (
         <Html>

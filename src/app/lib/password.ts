@@ -1,24 +1,24 @@
+import bcrypt from "bcryptjs";
 import crypto from 'crypto';
 
 /**
  * Hashea una contraseña usando SHA-256
- * NOTA: En producción, considera usar bcrypt o argon2 para mayor seguridad
  * El hash protege las contraseñas en la base de datos
  */
 
-export function hashPassword(password: string): string {
-    return crypto
-    .createHash('sha256')
-    .update(password + (process.env.PASSWORD_SALT || 'default-salt'))
-    .digest('hex');
+export async function hashPassword(password: string): Promise<string> {
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    return hashedPassword;
 }
 
 /**
  * Compara una contraseña en texto plano con su hash
  */
 
-export function comparePassword(password: string, hash: string): boolean {
-    return hashPassword(password) === hash;
+export async function comparePassword(password: string, hash: string): Promise<boolean> {
+    const isMatch = await bcrypt.compare(password, hash);
+    return isMatch;
 }
 
 /**

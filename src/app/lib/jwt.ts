@@ -21,6 +21,7 @@ export async function createToken(payload: TokenPayload, expiresIn = '7d'): Prom
     .setExpirationTime(expiresIn)
     .sign(secret)
     
+    
     return token;
 }
 
@@ -35,7 +36,7 @@ export async function verifyToken( token: string ): Promise <TokenPayload | null
 }
 
 export function extractTokenFromHeader(authorization?: string | null): string | null {
-    if (!authorization || !authorization.startsWith('Bearer')) {
+    if (!authorization || !authorization.startsWith('bearer')) {
         return null;
     }
     return authorization.substring(7);

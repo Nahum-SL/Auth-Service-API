@@ -2,16 +2,18 @@ import { Html, Head, Preview, Body, Container, Text, Link, Section, Tailwind, He
 
 interface WelcomeEmailProps {
     name: string;
-    verificationUrl: string;
+    verificationUrl?: string;
 }
 
 export default function WelcomeEmail({
         name = 'usuario',
-        verificationUrl = 'https://example.com/verify' 
+        verificationUrl,
     }: WelcomeEmailProps) {
+        const baseUrl = process.env.NEXT_PUBLIC_URL || "https://Localhost:3000";
+        const finallyVerificactionUrl = verificationUrl || `$(baseUrl)/verify`;
     return (
         <Html>
-            <Head />
+                <Head />
             <Preview> Verifica tu cuenta - API REST Auth </Preview>
             <Tailwind>
                 <Body className="bg-gray-100 font-sans">
@@ -32,7 +34,7 @@ export default function WelcomeEmail({
 
                             <Section className="text-center mb-6">
                                 <Link
-                                href={verificationUrl}
+                                href={finallyVerificactionUrl}
                                 className="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg no-underline transition-colors"
                                 >
                                     Verificar mi Email
@@ -44,7 +46,7 @@ export default function WelcomeEmail({
                             </Text>
 
                             <Text className="text-gray-600 text-sm leading-relaxed mb-4">
-                                {verificationUrl}                                
+                                {finallyVerificactionUrl}                                
                             </Text>
 
                             <Section className="border-t border-gray-200 pt-6 mt-6">

@@ -35,7 +35,7 @@ export async function GET(request: Request) {
                 name: true,
                 verified: true,
                 createdAt: true
-            }
+            },
         });
 
         if (!user) {

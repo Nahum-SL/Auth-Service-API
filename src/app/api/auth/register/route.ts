@@ -34,7 +34,7 @@ export async function POST(request: Request) {
         }
         
         // Crear usuario
-        const hashedPassword = hashPassword(validatedData.password);
+        const hashedPassword = await hashPassword(validatedData.password);
         const user = await prisma.user.create({
         data: {
             email: validatedData.email,
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
         );
         
         await resend.emails.send({
-        from: 'onboarding@resend.dev', // Cambia esto por tu dominio verificado
+        from: 'Mi App <onboarding@resend.dev>',
         to: user.email,
         subject: '¡Bienvenido! Verifica tu cuenta',
         html: emailHtml,

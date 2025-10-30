@@ -21,7 +21,7 @@ export async function POST(request: Request) {
             where: { email: validatedData.email }
         });
 
-        if (!user || !comparePassword(validatedData.password, user.password)) {
+        if (!user || !(await comparePassword(validatedData.password, user.password))) {
             return NextResponse.json(
                 { error: 'Credenciales invalidas'},
                 { status: 401 }
@@ -31,8 +31,8 @@ export async function POST(request: Request) {
         // Verificar si el email está verificado
         if (!user.verified) {
             return NextResponse.json(
-                { error: 'Por favor, verifique su email antes de iniciar sesión' },
-                { status: 483 }
+                { error: 'Por favor, verifique tu email antes de iniciar sesión' },
+                { status: 403 }
             );
         }
 
