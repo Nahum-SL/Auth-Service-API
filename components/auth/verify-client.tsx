@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { StatusCard } from "../../../components/auth/StatusCard";
+import { StatusCard } from "./StatusCard";
 
 export default function VerifyClient() {
     const searchParams = useSearchParams();
