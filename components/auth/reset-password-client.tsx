@@ -1,11 +1,11 @@
 'use client'
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { StatusCard } from "../../../components/auth/StatusCard";
-import { AuthFromCard } from "../../../components/auth/AuthFormCard";
+import { StatusCard } from "./StatusCard";
+import { AuthFromCard } from "./AuthFormCard";
 
-export default function ResetPasswordClientPage() {
+export default function ResetPasswordClient() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const [password, setPassword] = useState('')
