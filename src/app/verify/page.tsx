@@ -1,7 +1,7 @@
 'use client'
 
 import { Suspense } from "react"
-import VerifyClient from "./verify-client"
+import VerifyClient from "../verify-client/page"
 
 export default function VerifyPage() {
     return (

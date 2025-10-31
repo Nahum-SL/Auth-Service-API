@@ -2,16 +2,18 @@ import { Html, Head, Preview, Body, Container, Text, Link, Tailwind, Section, He
 
 interface WelcomeEmailProps {
     name: string;
-    resetUrl: string;
+    resetUrl?: string;
 }
 
 export default function PasswordReset({
         name = 'usuario',
-        resetUrl = 'https://auth-service-api-one.vercel.app/verify' 
+        resetUrl,
     }: WelcomeEmailProps) {
+        const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
+        const finalResetUrl = resetUrl || `${baseUrl}/reset-password`;
     return (
         <Html>
-            <Head />
+            <Head />    
             <Preview> Verifica tu cuenta - API REST Auth </Preview>
             <Tailwind>
                 <Body className="bg-gray-100 font-sans">
@@ -32,7 +34,7 @@ export default function PasswordReset({
 
                             <Section className="text-center mb-6">
                                 <Link
-                                href={resetUrl}
+                                href={finalResetUrl}
                                 className="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg no-underline transition-colors"
                                 >
                                     Restablecer contraseña
@@ -44,7 +46,7 @@ export default function PasswordReset({
                             </Text>                                
 
                             <Text className="text-gray-600 text-sm leading-relaxed mb-4">
-                                {resetUrl}                                
+                                {finalResetUrl}                                
                             </Text>
 
                             <Section className="border-t border-gray-200 pt-6 mt-6">
