@@ -10,7 +10,7 @@ export default function PasswordReset({
         resetUrl,
     }: WelcomeEmailProps) {
         const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
-        const finalResetUrl = resetUrl || `${baseUrl}/reset-password`;
+        const finalResetUrl = resetUrl || `${baseUrl}/reset-password-client`;
     return (
         <Html>
             <Head />    
