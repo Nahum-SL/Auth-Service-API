@@ -1,8 +1,8 @@
 
 export default function Dashboard() {
     return (
-        <div>
-            <h1> Este es el dashboard </h1>
+        <div className="text-center">
+            <h1 className="text-3xl text-white hover:text-cyan-400">TE VEO</h1>
         </div>
     )
 }
