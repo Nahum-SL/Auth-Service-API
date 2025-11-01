@@ -36,7 +36,7 @@ export default function RegisterPage() {
                 setSuccess(true);
                 // Redirigir en 3 segundos
                 setTimeout(() => {
-                    router.push('/register');
+                    router.push('/login');
                 }, 3000);
             } else {
                 setError(data.error || 'Error al regístrar usuario');
