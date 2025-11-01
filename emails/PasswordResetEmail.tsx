@@ -19,7 +19,7 @@ export default function PasswordReset({
                 <Body className="bg-gray-100 font-sans">
                     <Container className="mx-auto py-8 px-4 max-w-xl">
                         <Section className="bg-white rounded-lg shadow-lg p-8">
-                            <Heading className="text-3xl font-bol text-gray-900 mb-4">
+                            <Heading className="text-3xl font-bold text-gray-900 mb-4">
                                 Recuperar Contraseña
                             </Heading>
                             

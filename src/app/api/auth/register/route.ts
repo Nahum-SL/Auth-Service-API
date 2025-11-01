@@ -54,20 +54,24 @@ export async function POST(request: Request) {
         });
         
         // Enviar email de verificación
-        const verificationUrl = `${process.env.NEXT_PUBLIC_URL}/verify?token=${verificationToken}`;
-        const emailHtml = await render(
-        WelcomeEmail({ 
-            name: user.name || 'Usuario', 
-            verificationUrl 
-        })
-        );
+        const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
+        const verificationUrl = `${baseUrl}/verify?token=${verificationToken}`;
         
-        await resend.emails.send({
-        from: 'Mi App <onboarding@resend.dev>',
-        to: user.email,
-        subject: '¡Bienvenido! Verifica tu cuenta',
-        html: emailHtml,
-        });
+        try {
+            const emailHtml = await render(
+            WelcomeEmail({ name: user.name || 'Usuario', verificationUrl })
+            );
+
+            await resend.emails.send({
+            from: 'Mi App <onboarding@resend.dev>',
+            to: user.email,
+            subject: '¡Bienvenido! Verifica tu cuenta',
+            html: emailHtml,
+            });
+        } catch(emailError) {
+            console.error("Error al enviar el email", emailError);
+        }
+        
         
         return NextResponse.json(
         { 
