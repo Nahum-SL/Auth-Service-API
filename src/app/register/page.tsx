@@ -119,7 +119,7 @@ export default function RegisterPage() {
                 disabled={loading}
                 className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {loading ? 'Restableciendo..' : 'Restablecer Contraseña'}
+                    {loading ? 'Registrando..' : 'Registrar Cuenta'}
                 </button>
             </form>
         </AuthFromCard>

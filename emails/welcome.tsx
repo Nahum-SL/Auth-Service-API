@@ -10,7 +10,7 @@ export default function WelcomeEmail({
         verificationUrl,
     }: WelcomeEmailProps) {
         const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
-        const finallyVerificactionUrl = verificationUrl || `${baseUrl}/verify-client`;
+        const finallyVerificactionUrl = verificationUrl || `${baseUrl}/verify`;
     return (
         <Html>
                 <Head />

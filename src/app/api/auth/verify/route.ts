@@ -15,8 +15,8 @@ export async function POST(request: Request) {
 
         //Buscar token de verificación
         const verificationToken = await prisma.verificationToken.findUnique({
-            where: { token },
-        })
+            where: { token }
+        });
 
         if (!verificationToken) {
             return NextResponse.json(
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
             return NextResponse.json(
                 { error: 'El token de verificación ha expirado' },
                 { status: 400 }
-            )
+            );
         }
 
         // Actualizar usuario como verificado
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
         // Eliminar token usado
         await prisma.verificationToken.delete({
             where: { token },
-        })
+        });
 
         return NextResponse.json({
             message: '¡Email verificado exitosamente! Ya puedes iniciar sesión.',
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
             return NextResponse.json(
                 { error: 'Datos invalidos', details: error.issues },
                 { status: 400 }
-            )
+            );
         }
 
         return NextResponse.json(
